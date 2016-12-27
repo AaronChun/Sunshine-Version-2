@@ -170,7 +170,7 @@ public class ForecastFragment extends Fragment {
 
             String[] resultStrs = new String[numDays];
 
-            for(int i = 0; i < weatherArray.length(); i++) {
+            for (int i = 0; i < weatherArray.length(); i++) {
                 // For now, using the format "Day, description, hi/low"
                 String day;
                 String description;
@@ -184,7 +184,7 @@ public class ForecastFragment extends Fragment {
                 // "this saturday".
                 long dateTime;
                 // Cheating to convert this to UTC time, which is what we want anyhow
-                dateTime = dayTime.setJulianDay(julianStartDay+i);
+                dateTime = dayTime.setJulianDay(julianStartDay + i);
                 day = getReadableDateString(dateTime);
 
                 // description is in a child array called "weather", which is 1 element long.
@@ -209,11 +209,10 @@ public class ForecastFragment extends Fragment {
         }
 
 
-
         @Override
         protected String[] doInBackground(String... params) {
 
-            if(params.length==0){
+            if (params.length == 0) {
                 return null;
             }
 
@@ -232,7 +231,6 @@ public class ForecastFragment extends Fragment {
             try {
 
                 final String FORCAST_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?";
-
 
 
                 final String QUERY_PARAM = "q";
@@ -301,7 +299,7 @@ public class ForecastFragment extends Fragment {
 
 
             try {
-                return getWeatherDataFromJson(forecastJsonStr,numDays);
+                return getWeatherDataFromJson(forecastJsonStr, numDays);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
                 e.printStackTrace();
@@ -313,9 +311,11 @@ public class ForecastFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String[] strings) {
-            mforcastAdapter.clear();
-            for (String s:strings){
-                mforcastAdapter.add(s);
+            if (strings != null) {
+                mforcastAdapter.clear();
+                for (String s : strings) {
+                    mforcastAdapter.add(s);
+                }
             }
         }
     }
