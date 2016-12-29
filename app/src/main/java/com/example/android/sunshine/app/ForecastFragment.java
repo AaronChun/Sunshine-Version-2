@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -110,7 +111,11 @@ public class ForecastFragment extends Fragment {
 //                TextView textView = (TextView) view;
                 String forecastStr = mforcastAdapter.getItem(position);
                 //TODO:以上两种方式有什么区别？
-                Toast.makeText(getActivity(),forecastStr,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),forecastStr,Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(),DetailActivity.class);
+                intent.putExtra("text",forecastStr);
+                startActivity(intent);
             }
         });
 
