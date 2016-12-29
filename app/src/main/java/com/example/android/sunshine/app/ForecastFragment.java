@@ -107,8 +107,10 @@ public class ForecastFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textView = (TextView) view;
-                Toast.makeText(getActivity(),textView.getText(),Toast.LENGTH_SHORT).show();
+//                TextView textView = (TextView) view;
+                String forecastStr = mforcastAdapter.getItem(position);
+                //TODO:以上两种方式有什么区别？
+                Toast.makeText(getActivity(),forecastStr,Toast.LENGTH_SHORT).show();
             }
         });
 
