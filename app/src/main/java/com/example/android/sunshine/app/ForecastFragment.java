@@ -61,6 +61,9 @@ public class ForecastFragment extends Fragment {
     setHasOptionsMenu(true);
   }
 
+  /**
+   * update weather data
+   */
   private void updateWeather() {
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
     String location = prefs.getString(getString(R.string.pref_location_key),
